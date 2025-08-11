@@ -1,519 +1,291 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>موقع كورسات البرمجة</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الموقع مغلق مؤقتًا</title>
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Cairo', sans-serif;
-  }
+  <!-- خط القاهرة -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-  body {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    scroll-behavior: smooth;
-  }
-
-  header {
-    background: rgba(0,0,0,0.6);
-    padding: 22px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: saturate(180%) blur(10px);
-  }
-
-  header .logo {
-    font-size: 30px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    cursor: default;
-    color: #ffd700;
-    text-shadow: 0 2px 8px rgba(255,215,0,0.8);
-  }
-
-  nav a {
-    color: #fff;
-    margin-left: 35px;
-    font-weight: 700;
-    text-decoration: none;
-    position: relative;
-    transition: color 0.35s ease;
-    font-size: 1.1rem;
-    padding-bottom: 6px;
-  }
-
-  nav a:hover {
-    color: #ffd700;
-  }
-
-  nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: #ffd700;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.35s ease;
-    border-radius: 2px;
-  }
-
-  nav a:hover::after,
-  nav a:focus::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-
-  .hero {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 90px 25px 120px;
-    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
-    position: relative;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(30, 60, 114, 0.85);
-    z-index: 0;
-    mix-blend-mode: multiply;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 720px;
-  }
-
-  .hero-content h1 {
-    font-size: 3.8rem;
-    margin-bottom: 24px;
-    font-weight: 800;
-    text-shadow: 0 4px 14px rgba(0,0,0,0.7);
-    letter-spacing: 1.3px;
-  }
-
-  .hero-content p {
-    font-size: 1.4rem;
-    margin-bottom: 45px;
-    line-height: 1.6;
-    text-shadow: 0 3px 10px rgba(0,0,0,0.55);
-  }
-
-  .hero-content .btn {
-    padding: 18px 50px;
-    background: #ffd700;
-    color: #222;
-    font-weight: 800;
-    font-size: 1.3rem;
-    border: none;
-    border-radius: 60px;
-    cursor: pointer;
-    box-shadow: 0 10px 28px rgba(255, 215, 0, 0.7);
-    transition: background 0.35s ease, box-shadow 0.35s ease;
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: 0.7px;
-    user-select: none;
-  }
-
-  .hero-content .btn:hover,
-  .hero-content .btn:focus {
-    background: #ffec70;
-    box-shadow: 0 15px 38px rgba(255, 236, 112, 0.95);
-    outline: none;
-  }
-
-  section.courses {
-    background: #f9f9f9;
-    color: #222;
-    padding: 70px 30px 90px;
-    box-shadow: inset 0 4px 20px rgb(255 255 255 / 0.2);
-  }
-
-  section.courses h2 {
-    text-align: center;
-    font-size: 3.1rem;
-    margin-bottom: 55px;
-    font-weight: 800;
-    color: #1e3c72;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 4px rgb(30 60 114 / 0.5);
-  }
-
-  .courses-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    gap: 34px;
-    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
-  }
-
-  .course-card {
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgb(0 0 0 / 0.1);
-    overflow: hidden;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .course-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 25px 50px rgb(0 0 0 / 0.18);
-  }
-
-  .course-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.35s ease;
-    border-bottom: 6px solid #ffd700;
-  }
-
-  .course-card:hover .course-image {
-    transform: scale(1.05);
-  }
-
-  .course-content {
-    padding: 30px 30px 35px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .course-content h3 {
-    margin-bottom: 18px;
-    color: #1e3c72;
-    font-weight: 800;
-    font-size: 1.35rem;
-    letter-spacing: 0.4px;
-    transition: color 0.3s ease;
-  }
-
-  .course-content h3:hover {
-    color: #ffbf00;
-  }
-
-  .course-content p {
-    flex: 1;
-    font-size: 1.05rem;
-    margin-bottom: 28px;
-    line-height: 1.5;
-    color: #555;
-  }
-
-  .course-content .btn-enroll {
-    align-self: flex-start;
-    background: #1e3c72;
-    color: #fff;
-    padding: 14px 32px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    border-radius: 36px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.35s ease, box-shadow 0.35s ease;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 5px 15px rgb(30 60 114 / 0.7);
-    user-select: none;
-  }
-
-  .course-content .btn-enroll:hover,
-  .course-content .btn-enroll:focus {
-    background: #2a5298;
-    box-shadow: 0 10px 25px rgb(42 82 152 / 0.9);
-    outline: none;
-  }
-
-  #about, #contact, #how-to-join {
-    max-width: 900px;
-    margin: 50px auto 80px;
-    padding: 0 20px;
-    border-radius: 15px;
-    box-shadow: 0 6px 30px rgb(0 0 0 / 0.35);
-    background: rgba(30, 60, 114, 0.95);
-  }
-
-  #about {
-    text-align: center;
-    color: #eee;
-  }
-
-  #about h2,
-  #how-to-join h2,
-  #contact h2 {
-    color: #ffd700;
-    margin-bottom: 28px;
-    font-weight: 800;
-    font-size: 2.7rem;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 8px rgba(255,215,0,0.8);
-  }
-
-  #about p,
-  #how-to-join p,
-  #contact p {
-    font-size: 1.25rem;
-    line-height: 1.7;
-    color: #eee;
-  }
-
-  #how-to-join {
-    background: rgba(30, 60, 114, 0.95);
-    text-align: center;
-  }
-
-  #how-to-join ul {
-    list-style: none;
-    text-align: right;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0;
-  }
-
-  #how-to-join ul li {
-    background: #1e3c72;
-    margin-bottom: 18px;
-    padding: 18px 22px;
-    border-radius: 15px;
-    font-weight: 700;
-    font-size: 1.15rem;
-    box-shadow: 0 6px 22px rgba(30,60,114,0.75);
-    transition: background 0.3s ease;
-    cursor: default;
-    user-select: none;
-  }
-
-  #how-to-join ul li:hover {
-    background: #2a5298;
-  }
-
-  #how-to-join ul li a {
-    color: #ffd700;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  #how-to-join ul li a:hover,
-  #how-to-join ul li a:focus {
-    color: #ffec70;
-    outline: none;
-  }
-
-  #contact {
-    background: rgba(30, 60, 114, 0.95);
-    color: #eee;
-    padding: 50px 20px;
-    text-align: center;
-  }
-
-  #contact p {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-  }
-
-  #contact a {
-    color: #ffd700;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.15rem;
-    transition: color 0.3s ease;
-  }
-
-  #contact a:hover,
-  #contact a:focus {
-    color: #ffec70;
-    outline: none;
-  }
-
-  footer {
-    background: #111;
-    color: #bbb;
-    text-align: center;
-    padding: 30px 10px;
-    font-size: 1rem;
-    letter-spacing: 0.6px;
-    user-select: none;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.8);
-  }
-
-  @media (max-width: 900px) {
-    .hero-content h1 {
-      font-size: 2.8rem;
-    }
-    section.courses h2 {
-      font-size: 2.4rem;
-    }
-    .courses-container {
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 24px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    header {
-      flex-direction: column;
-      text-align: center;
-      padding: 18px 20px;
+  <style>
+    :root{
+      --bg1: #0b1020;
+      --bg2: #0f1724;
+      --card: rgba(255,255,255,0.04);
+      --accent: #6ee7b7; /* لون مميز */
+      --soft: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.03);
+      --text: #e6eef7;
     }
 
-    nav {
-      margin-top: 15px;
-    }
-    nav a {
-      margin-left: 18px;
-      margin-right: 18px;
-      font-size: 1rem;
-    }
-
-    .hero-content h1 {
-      font-size: 2.4rem;
-    }
-
-    section.courses {
-      padding: 60px 15px 70px;
-    }
-
-    #about, #contact, #how-to-join {
-      margin: 40px 15px 70px;
-      padding: 40px 20px;
-      border-radius: 12px;
+    /* Reset بسيط */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:'Cairo',sans-serif;
+      background: linear-gradient(120deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:30px;
+      overflow:hidden;
     }
 
-    #about h2,
-    #how-to-join h2,
-    #contact h2 {
-      font-size: 2.1rem;
-      margin-bottom: 22px;
+    /* خلفية متحركة - تدرج ناعم يتحرك */
+    .animated-bg{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      background: radial-gradient(ellipse at 20% 10%, rgba(110,231,183,0.06), transparent 5%),
+                  radial-gradient(ellipse at 80% 90%, rgba(99,102,241,0.06), transparent 5%),
+                  linear-gradient(120deg, rgba(10,14,26,0.9), rgba(16,23,36,0.85));
+      filter:blur(18px) saturate(120%);
+      animation: bgShift 12s linear infinite;
+      transform: translateZ(0);
+    }
+    @keyframes bgShift{
+      0% { background-position: 0% 0%, 100% 100%, 0% 0%;}
+      50% { background-position: 20% 10%, 80% 90%, 100% 100%;}
+      100% { background-position: 0% 0%, 100% 100%, 0% 0%;}
     }
 
-    #how-to-join ul li {
-      font-size: 1rem;
-      padding: 14px 18px;
-      margin-bottom: 12px;
+    /* سحب شفافة متحركة (نمط سحابي بسيط) */
+    .clouds{
+      position:fixed;
+      inset: -20% -20%;
+      z-index:0;
+      pointer-events:none;
+      opacity:0.18;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.04) 0 6%, transparent 6%),
+        radial-gradient(circle at 60% 40%, rgba(255,255,255,0.03) 0 8%, transparent 8%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.02) 0 10%, transparent 10%);
+      animation: cloudsMove 28s linear infinite;
+      mix-blend-mode:overlay;
+    }
+    @keyframes cloudsMove{
+      0%{ transform: translateX(-8%); }
+      50%{ transform: translateX(8%); }
+      100%{ transform: translateX(-8%); }
     }
 
-    .course-content h3 {
-      font-size: 1.15rem;
+    /* الحاوية الرئيسية */
+    .card{
+      position:relative;
+      z-index:2;
+      width:min(920px, 94%);
+      max-width:1100px;
+      border-radius:20px;
+      padding:36px;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow:
+        0 10px 30px rgba(2,6,23,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px) saturate(120%);
+      align-items:center;
+      overflow:hidden;
     }
 
-    .course-content p {
-      font-size: 0.95rem;
-      margin-bottom: 20px;
+    /* اللوحة اليسارية - رسالة قوية */
+    .main{
+      padding:18px 20px;
     }
 
-    .course-content .btn-enroll {
-      padding: 11px 26px;
-      font-size: 1rem;
+    .badge{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(110,231,183,0.12), rgba(99,102,241,0.08));
+      color:var(--accent);
+      font-weight:700;
+      letter-spacing:0.6px;
+      font-size:14px;
+      margin-bottom:18px;
+      border:1px solid rgba(110,231,183,0.06);
     }
-  }
-</style>
+
+    h1{
+      font-size:36px;
+      line-height:1.05;
+      margin-bottom:14px;
+      font-weight:800;
+      color:var(--text);
+      text-shadow: 0 4px 20px rgba(2,6,23,0.6);
+    }
+
+    p.lead{
+      color:rgba(230,238,247,0.85);
+      font-size:17px;
+      margin-bottom:22px;
+      line-height:1.6;
+    }
+
+    ul.info{
+      list-style:none;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    ul.info li{
+      background:var(--glass);
+      padding:12px 14px;
+      border-radius:12px;
+      font-weight:600;
+      font-size:14px;
+      color:rgba(230,238,247,0.9);
+      border:1px solid rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px);
+    }
+
+    /* اللوحة اليمنى - رمز بصري أو عداد */
+    .side{
+      padding:18px;
+      border-radius:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      min-height:200px;
+    }
+
+    .icon-wrap{
+      width:88px;height:88px;border-radius:18px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+    }
+
+    .icon-wrap svg{ width:56px;height:56px; color:var(--accent); filter:drop-shadow(0 6px 20px rgba(110,231,183,0.06)); }
+
+    .status{
+      font-size:14px;
+      color:rgba(230,238,247,0.9);
+      font-weight:700;
+      letter-spacing:0.4px;
+    }
+
+    /* بار تحميل وهمي أنيق (لجمالية فقط) */
+    .progress{
+      width:100%;
+      height:12px;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      overflow:hidden;
+      position:relative;
+    }
+    .progress > span{
+      display:block;
+      height:100%;
+      width:54%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(110,231,183,0.14), rgba(110,231,183,0.26));
+      box-shadow:0 6px 18px rgba(110,231,183,0.04);
+      position:relative;
+      animation: pulse 3.6s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%{ transform:scaleX(0.98); opacity:0.9; }
+      50%{ transform:scaleX(1.02); opacity:1; }
+      100%{ transform:scaleX(0.98); opacity:0.9; }
+    }
+
+    /* نص الملاحظة الكبير */
+    .big{
+      font-size:13px;
+      color:rgba(230,238,247,0.78);
+      text-align:center;
+      padding: 8px 6px;
+      border-radius:10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border:1px solid rgba(255,255,255,0.02);
+      width:100%;
+    }
+
+    /* تأثير هيروكارد عند المرور */
+    .card:hover{ transform: translateY(-6px) }
+    .card{ transition: transform 380ms cubic-bezier(.2,.9,.25,1); }
+
+    /* تكيّف للهواتف */
+    @media (max-width:880px){
+      .card{ grid-template-columns: 1fr; padding:24px; gap:18px; border-radius:16px }
+      h1{ font-size:28px }
+      .icon-wrap{ width:72px;height:72px }
+    }
+
+    /* تزيين نص صغير أسفل */
+    footer.note{
+      position:fixed;
+      left:0; right:0; bottom:18px;
+      z-index:3;
+      display:flex;
+      justify-content:center;
+      pointer-events:none;
+    }
+    footer.note .inner{
+      background:transparent;
+      color:rgba(230,238,247,0.14);
+      font-size:13px;
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.02);
+      backdrop-filter:blur(6px);
+      pointer-events:auto;
+    }
+  </style>
 </head>
 <body>
+  <div class="animated-bg" aria-hidden="true"></div>
+  <div class="clouds" aria-hidden="true"></div>
 
-<header>
-  <div class="logo">DrPro</div>
-  <nav>
-    <a href="#courses">الكورسات</a>
-    <a href="#about">عن الموقع</a>
-    <a href="#how-to-join">كيف تشترك</a>
-    <a href="#contact">تواصل معنا</a>
-  </nav>
-</header>
+  <main class="card" role="main" aria-labelledby="title">
+    <section class="main" aria-describedby="desc">
+      <span class="badge">تنبيه مهم</span>
+      <h1 id="title">نعتذر — الموقع مغلق مؤقتًا</h1>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>تعلم البرمجة بسهولة واحترافية</h1>
-    <p>منصتنا توفر لك أفضل الكورسات لتطوير مهاراتك البرمجية بشكل عملي وممتع.</p>
-    <a href="#courses" class="btn">ابدأ التعلم الآن</a>
-  </div>
-</section>
+      <p id="desc" class="lead">
+        حالياً الموقع مغلق لأسباب فنية وعملية تطوير. فريقنا يعمل الآن على إصلاح وتحسين الأنظمة لضمان تجربة أفضل وأكثر أمانًا لكم. نشكركم على صبركم وتفهمكم.
+      </p>
 
-<section id="courses" class="courses">
-  <h2>كورساتنا</h2>
-  <div class="courses-container">
-    <article class="course-card">
-      <img class="course-image" src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=600&q=80" alt="Python">
-      <div class="course-content">
-        <h3>تعلم بايثون من الصفر</h3>
-        <p>ابدأ رحلتك مع لغة بايثون، تعلم الأساسيات، البرمجة الكائنية، وبناء المشاريع العملية.</p>
-        <a href="trynow.html" class="btn-enroll">سجل الآن</a>
+      <ul class="info" aria-hidden="false">
+        <li>تحسينات تقنية جارية</li>
+        <li>اختبارات أداء وأمان</li>
+        <li>عودة قريباً جداً</li>
+      </ul>
+    </section>
+
+    <aside class="side" aria-label="حالة الموقع">
+      <div class="icon-wrap" aria-hidden="true">
+        <!-- أيقونة درع/صيانة -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2l7 3v5c0 5-3.8 9.8-7 11-3.2-1.2-7-6-7-11V5l7-3z" fill="currentColor"/>
+          <path d="M9 12l2 2 4-4" stroke="rgba(255,255,255,0.12)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
-    </article>
 
-    <article class="course-card">
-      <img class="course-image" src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=600&q=80" alt="Web Development">
-      <div class="course-content">
-        <h3>تطوير المواقع بـ HTML & CSS & JS</h3>
-        <p>تعلم كيفية بناء مواقع ويب حديثة، تفاعلية وجذابة باستخدام أحدث التقنيات.</p>
-        <a href="trynow.html" class="btn-enroll">سجل الآن</a>
+      <div class="status">حالة: مغلق مؤقتاً</div>
+
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="54">
+        <span></span>
       </div>
-    </article>
 
-    <article class="course-card">
-      <img class="course-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Machine Learning">
-      <div class="course-content">
-        <h3>مقدمة في تعلم الآلة والذكاء الاصطناعي</h3>
-        <p>تعرف على مفاهيم الذكاء الاصطناعي وتعلم كيفية بناء نماذج تعلم آلي فعالة.</p>
-        <a href="trynow.html" class="btn-enroll">سجل الآن</a>
-      </div>
-    </article>
-  </div>
-</section>
+      <div class="big">نحن نعمل على إرجاع الموقع بإصدارة أفضل — شكراً لصبركم</div>
+    </aside>
+  </main>
 
-<section id="about">
-  <h2>عن موقعنا</h2>
-  <p>
-    نحن فريق متخصص في تقديم أفضل المحتويات التعليمية في مجال البرمجة. هدفنا هو تمكين كل متعلم من اكتساب مهارات برمجية تساعده في بناء مستقبل ناجح. المنصة تضم كورسات متنوعة تغطي مجالات متعددة من تطوير المواقع إلى الذكاء الاصطناعي.
-  </p>
-</section>
-
-<section id="how-to-join">
-  <h2>كيف تشترك</h2>
-  <p>للاشتراك في أي من كورساتنا اتبع الخطوات التالية:</p>
-  <ul>
-    <li>أرسل رسالة على تليجرام إلى: <a href="https://t.me/AbodaDev" target="_blank">@AbodaDev</a></li>
-    <li>تواصل مع الإدارة للاتفاق على تفاصيل الكورس والدفع.</li>
-    <li>قم بدفع المبلغ المطلوب عبر فودافون كاش.</li>
-    <li>استلم كود الدخول الخاص بالكورس وابدأ التعلم.</li>
-  </ul>
-</section>
-
-<section id="contact">
-  <h2>تواصل معنا</h2>
-  <p>هل لديك استفسار؟ راسلنا عبر البريد الإلكتروني أو تابعنا على وسائل التواصل الاجتماعي.</p>
-  <p>📧 <a href="mailto:abdelrahmanmbartak@gmail.com">abdelrahmanmbartak@gmail.com</a></p>
-  <p>📞 Telegram : <a href="https://t.me/AbodaDev" target="_blank">@AbodaDev</a></p>
-</section>
-
-<footer>
-  جميع الحقوق محفوظة &copy; 2025 DrPro
-</footer>
-
+  <footer class="note" aria-hidden="true">
+    <div class="inner">نعتذر عن أي إزعاج — فريق الدعم يعمل الآن</div>
+  </footer>
 </body>
 </html>
